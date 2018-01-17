@@ -14,5 +14,6 @@ Specification：详细说明，说明书
         2.Merge执行的时候有时候会有冲突，什么情况下会有冲突呢？
         抓个活例记录下来。
 3.git--Branches(分支)
+    目前位于 moreBranche00 (current Branches)
     注意：import into Version　control -- git(or share on github)之后
     才会出现这个选项
