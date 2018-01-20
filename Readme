@@ -21,6 +21,16 @@ Specification：详细说明，说明书
         并和远程库保持一致呢？
         2.Merge执行的时候有时候会有冲突，什么情况下会有冲突呢？
         抓个活例记录下来。
+        这里抓了一个：
+            conflict 产生过程：
+                首先我把所有分支都合并到formerge00
+                    然后我checkout(切换)到master，因为这个master是与远程分支track的
+                    然后我修改了readme的一处，同时添加了几张图片文件，然而我并没有commit
+            此时我checkout到formerge00，event log就报错了，如图"merge conflict01.bmp"。
+
+            conflict 解决过程：
+                我在master分支下做了一次commit，然后就可以checkout去其他分支了。
+                不过commit之后上面的分支图变了，变成图"merge conflict01.bmp"最下面的样子。
 3.git--Branches(分支)
     目前位于 moreBranche00 (current Branches)
     注意：import into Version　control -- git(or share on github)之后
