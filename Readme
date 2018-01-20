@@ -11,7 +11,7 @@ Specification：详细说明，说明书
         1.如果此时，(假设本地程序员是A)程序员B异地pull远程库并修改程序
         就会有两个不同的分支，这时可以有怎样的方法使得两个人的工作合并
         并和远程库保持一致呢？
-        2.Merge执行的时候有时候会有冲突，什么情况下会有冲突呢？
+        2.执行Merge的时候有时候会有冲突，什么情况下会有冲突呢？(现在是master Branche)
         抓个活例记录下来。
 3.git--Branches(分支)
     目前位于 moreBranche00 (current Branches)
