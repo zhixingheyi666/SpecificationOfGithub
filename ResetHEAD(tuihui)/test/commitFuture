@@ -1,0 +1,41 @@
+<Reset Head研究>
+    作用：在不同的commit之间切换。
+1.在Git中，用HEAD表示当前版本，一个版本就是HEAD^，上上一个版本就是HEAD^^，或者
+    缩写的版本号，如a76e987(前七位)。在调试过程中，我希望<退回到前面的版本>运行，
+    以便观察改动使程序运行发生了怎样的变化。
+2.重要学习参考：廖雪峰 git教程 版本退回
+    https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013744142037508cf42e51debf49668810645e02887691000
+    一看就懂，切中要害
+3.重要提示：
+    a.版本退回的本意是<放弃>当前的版本，回到从前。因为执行退回后，pycharm的版本控制的log
+    window就看不到退回前的版本了。<廖>的教程也是佐证，退回后git log命令已经看不到最新版本的信息了。
+    b.但是git的优秀在于，他并没粗暴删除，如果能够找到不显示的版本的版本号，还是可以通过git reset <版本号>
+    来回到"未来"。
+    c.<廖>的教程提供了回到"未来"的办法，但是在pycharm中，暂时还找到直接使用git命令的接口，所以没法按
+    教程的办法查找"未来"的版本号。所以在执行版本退回命令之前，<一定一定>要先记录未来的版本号(缩写)，
+    以防未来后悔。在另外的地方记，不然reset之后还是有可能看不到。
+
+    ·总结：reset head 会使"未来"不可见，操作之前切记！！<记录版本号>。
+
+4.<从早先的commit(早于当前head)创建新分支> ---- SF:我个人应用git reset的具体实践
+    a.所有操作限制在pycharm IDE的环境下
+    b.不管是git console或者pycharm git环境下，git checkout 命令都是默认在当前branch
+    的当前节点创建新分支。git console我不知道是否有特别的命令可以指定从某个从前的commit
+    开始创建分支，pycharm git我没找到相应的选项。因此我这里借用了git reset的一点小技巧
+    实现了从之前的某个commit创建分支。
+    c.需求起因：在调试过程中，我希望<退回到前面的版本>运行，
+        以便观察改动使程序运行发生了怎样的变化。
+    d.提示：此操作有风险，需谨慎
+        ·从早先的commit创建新分支
+            ·把当前工作commit，防止未commit的代码在混乱的操作中丢失。
+            ·记录下当前分支(就叫future branch吧)的hash，为了后面还原回来。
+            ·假设希望从前面的commit(就叫oldA branch)创建一个新分支
+                从git菜单栏找到Reset HEAD，弹出框中reset type栏选hard，
+                to commit栏填写oldA branch的hash(可以填前七位缩写)
+            ·从git菜单栏选择branch，选择新建分支，填写分支名称branchFromOld
+                至此完成在早先commit创建分支的目的。
+            ·找回future commit，从git菜单栏找到Reset HEAD，弹出框中reset type栏选hard，
+                to commit栏填写future branch的hash(可以填前七位缩写)
+5.git reset 的详细介绍，以及实践用法参考下面文章，简明清晰，很好
+    https://segmentfault.com/a/1190000009658888
+    https://www.jyt0532.com//2017/03/30/git-reset/
